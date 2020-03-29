@@ -25,7 +25,8 @@ from ldacomplaints import lda_analysis
 
 DATA_PATH = pathlib.Path(__file__).parent.resolve()
 EXTERNAL_STYLESHEETS = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
-FILENAME = "data/customer_complaints_narrative_sample.csv"
+#FILENAME = "data/customer_complaints_narrative_sample.csv"
+FILENAME = "../customer26.csv"
 FILENAME_PRECOMPUTED = "data/precomputed.json"
 PLOTLY_LOGO = "https://images.plot.ly/logo/new-branding/plotly-logomark.png"
 GLOBAL_DF = pd.read_csv(DATA_PATH.joinpath(FILENAME), header=0)
@@ -37,7 +38,7 @@ We are casting the whole column to datetime to make life easier in the rest of t
 It isn't a terribly expensive operation so for the sake of tidyness we went this way.
 """
 GLOBAL_DF["Date received"] = pd.to_datetime(
-    GLOBAL_DF["Date received"], format="%m/%d/%Y"
+    GLOBAL_DF["Date received"], format="%m-%d-%Y"
 )
 
 """
@@ -119,7 +120,7 @@ def get_complaint_count_by_company(dataframe):
     """ Helper function to get complaint counts for unique banks """
     company_counts = dataframe["Company"].value_counts()
     # we filter out all banks with less than 11 complaints for now
-    company_counts = company_counts[company_counts > 10]
+    #company_counts = company_counts[company_counts > 10]
     values = company_counts.keys().tolist()
     counts = company_counts.tolist()
     return values, counts
@@ -376,7 +377,7 @@ NAVBAR = dbc.Navbar(
                 [
                     dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
                     dbc.Col(
-                        dbc.NavbarBrand("Bank Customer Complaints", className="ml-2")
+                        dbc.NavbarBrand("NPCI Customer Complaints", className="ml-2")
                     ),
                 ],
                 align="center",
@@ -780,7 +781,7 @@ def update_bank_drop_on_click(value):
     if value is not None:
         selected_bank = value["points"][0]["x"]
         return selected_bank
-    return "EQUIFAX, INC."
+    return "ICICI Bank, INC."
 
 
 if __name__ == "__main__":
