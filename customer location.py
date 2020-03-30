@@ -41,7 +41,7 @@ map_df
 # Correct spellings of states from out dataframe to match those of GeoDataframe
 # I found these 4 names manually
 
-data_for_map['State'].iloc[1] = 'Arunanchal Pradesh'
+#data_for_map['State'].iloc[1] = 'Arunanchal Pradesh'
 
 # %%
 # Plot the default map
