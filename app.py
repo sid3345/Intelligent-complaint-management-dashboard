@@ -382,7 +382,7 @@ NAVBAR = dbc.Navbar(
                 align="center",
                 no_gutters=True,
             ),
-            href="https://plot.ly",
+            #href="https://plot.ly",
         )
     ],
     color="dark",
