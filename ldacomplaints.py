@@ -55,7 +55,7 @@ def lda_analysis(df, stop_words):
 
     processed_docs = list(map(cleanup_text, docs))
     print("len(processed_docs)", len(processed_docs))
-    if len(processed_docs) < 11:
+    if len(processed_docs) < 3:
         print("INSUFFICIENT DOCS TO RUN LINEAR DISCRIMINANT ANALYSIS")
         return (None, None, None, None)
 
@@ -115,7 +115,7 @@ def tsne_analysis(ldamodel, corpus):
         )
         tsne_lda = tsne_model.fit_transform(df_topics)
     except:
-        print("TSNE_ANALYSIS WENT WRONG, PLEASE RE-CHECK YOUR BANK DATASET")
+        print("TSNE_ANALYSIS WENT WRONG, PLEASE RE-CHECK YOUR FASTAG DATASET")
         return (topic_nums, None)
 
     return (topic_nums, tsne_lda)

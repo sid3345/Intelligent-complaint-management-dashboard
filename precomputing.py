@@ -7,9 +7,8 @@ import json
 
 DATA_PATH = pathlib.Path(__file__).parent.resolve()
 EXTERNAL_STYLESHEETS = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
-#FILENAME = "data/customer_complaints_narrative_sample.csv"
-FILENAME = "data/customer26.csv"
-GLOBAL_DF = pd.read_csv(DATA_PATH.joinpath(FILENAME), header=0)
+FILENAME = "data/customer29.csv"
+GLOBAL_DF = pd.read_csv(DATA_PATH.joinpath(FILENAME),header=0)
 
 """
 In order to make the graphs more useful we decided to prevent some words from being included
@@ -37,13 +36,11 @@ def add_stopwords(selected_bank):
     the Wordcloud dash component.
     """
     selected_bank_words = re.findall(r"[\w']+", selected_bank)
-    for word in selected_bank_words:
-        STOPWORDS.add(word.lower())
 
     print("Added %s stopwords:" % selected_bank)
     for word in selected_bank_words:
         print("\t", word)
-    return STOPWORDS
+    return 
 
 
 def precompute_all_lda():
@@ -68,7 +65,7 @@ def precompute_all_lda():
                 (i, topic)
                 for i, topics in lda_model.show_topics(formatted=False)
                 for j, (topic, wt) in enumerate(topics)
-                if j < 3
+                if j < 2
             ]
 
             df_top3words_stacked = pd.DataFrame(
@@ -108,9 +105,10 @@ def precompute_all_lda():
             }
 
             counter += 1
-        except:
+        except Exception as e:
             print("SOMETHING WENT HORRIBLY WRONG WITH BANK: ", bank)
             failed_banks.append(bank)
+            #print(e)
 
     with open("data/precomputed.json", "w+") as res_file:
         json.dump(results, res_file)
