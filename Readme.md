@@ -6,9 +6,21 @@
  
  
  Features:
+ 
+ 
  -> Bigrams
+ 
+ 
  -> Bar plots
+ 
+ 
  -> Time series
+ 
+ 
  -> Pie chart
+ 
+ 
  -> Statewise bar plot
+ 
+ 
  -> Citywise map plot
