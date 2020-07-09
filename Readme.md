@@ -1,4 +1,4 @@
-# dash-nlp
+# Intelligent complaint management dashboard using Python Dash, Plotly
  **Dashboard** for **complaint management**. This was a project for **NPCI API Accelerator Hackathon** hosted on **HackerEarth**. We got under top 20 all over India in the hackathon.
  
  
